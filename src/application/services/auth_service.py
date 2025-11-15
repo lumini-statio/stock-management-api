@@ -4,6 +4,8 @@ from domain.exceptions.security.not_match_pw import NotMatchedPasswordError
 from domain.exceptions.users.already_exists import UserAlreadyExistsError
 from application.services.user_service import UserService
 from typing import Optional
+from fastapi import HTTPException, status
+from jose import JWTError
 
 
 class AuthService:
@@ -33,14 +35,27 @@ class AuthService:
 
 
     async def get_current_user(self, token: str) -> Optional[User]:
-        payload = await self.security.verify_token(token)
+        try:
+            payload = await self.security.verify_token(token)
 
-        if not payload:
-            return None
-        
+            if not payload:
+                raise HTTPException(
+                    status_code=status.HTTP_401_UNAUTHORIZED,
+                    detail="Invalid authentication credentials",
+                )
+        except JWTError:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid token",
+            )
+            
         user_id = payload.get('sub')
 
         if not user_id:
-            return None
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="User not founded",
+            )
         
-        return await self.service.get_by_id(user_id)
+        
+        return {'user': await self.service.get_by_id(user_id)}

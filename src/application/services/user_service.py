@@ -39,7 +39,7 @@ class UserService:
         user_db = await self.repo.get_by_username(user.username)
 
         if not user_db:
-            raise UserNotFoundError(user.username)
+            raise UserNotFoundError()
 
         return await self.repo.update(user_db, user)
     
@@ -47,6 +47,6 @@ class UserService:
         user_db = await self.repo.get_by_username(user.username)
 
         if not user_db:
-            raise UserNotFoundError(user.username)
+            raise UserNotFoundError()
         
         return await self.repo.delete(user_db)
