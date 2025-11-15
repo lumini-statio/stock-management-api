@@ -42,3 +42,29 @@ class UserResponse(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+
+class ProductBase(BaseModel):
+    class Meta:
+        orm_mode = True
+
+class Product(ProductBase):
+    id: int
+    name: str
+    description: Optional[str]
+    price: float
+
+
+class ProductCreate(ProductBase):
+    name: str
+    description: Optional[str]
+    price: float
+
+class ProductUpdate(ProductBase):
+    name: str
+    description: Optional[str]
+    price: float
+
+
+class ProductDelete(ProductBase):
+    id: int

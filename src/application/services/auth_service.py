@@ -58,4 +58,4 @@ class AuthService:
             )
         
         
-        return {'user': await self.service.get_by_id(user_id)}
+        return await self.service.get_by_id(user_id)

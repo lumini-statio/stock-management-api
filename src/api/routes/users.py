@@ -14,19 +14,21 @@ def root():
 
 @user_router.get('/users/', response_model=List[UserResponse])
 async def users(service: UserService = Depends(get_user_service)):
-    users = await service.all()
-    return users
+    return await service.all()
+
 
 @user_router.get('/users/{user_id}')
 async def get_user_by_id(user_id: int, service: UserService = Depends(get_user_service)):
     user = await service.get_by_id(user_id)
     return user
 
+
 @user_router.put('/users/{user_id}')
 async def update_user(user_id: int, user: CreateUser, service: UserService = Depends(get_user_service)):
     user = await service.update(user_id, user)
 
     return user
+
 
 @user_router.delete('/users/{user_id}')
 def delete_user(user_id: int, service: UserService = Depends(get_user_service)):

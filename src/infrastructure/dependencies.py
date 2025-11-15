@@ -4,11 +4,14 @@ from sqlalchemy.orm import Session
 from jose import JWTError, jwt
 
 from application.services.auth_service import AuthService
+from application.services.product_service import ProductService
 from application.services.user_service import UserService
 
+from domain.ports.product_repository import ProductRepository
 from domain.ports.user_repository import UserRepository
 
 from infrastructure.adapters.database.db_config import DatabaseConfig
+from infrastructure.adapters.repositories.product_repository import SQLProductRepository
 from infrastructure.adapters.repositories.user_repository import SQLUserRepository
 from infrastructure.adapters.security.jwt_adapter import JWTSecurityAdapter
 
@@ -36,8 +39,17 @@ def get_user_repository(db: Session = Depends(get_db_config)):
     return SQLUserRepository(db)
 
 
+def get_product_repository(db: Session = Depends(get_db_config)):
+    return SQLProductRepository(db)
+
+
 async def get_user_service(repo: UserRepository = Depends(get_user_repository)):
     return UserService(repo)
+
+
+async def get_product_service(repo: ProductRepository = Depends(get_product_repository)):
+    return ProductService(repo)
+
 
 async def get_current_user(
     credentials: HTTPAuthorizationCredentials = Depends(security),

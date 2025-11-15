@@ -17,9 +17,9 @@ class ProductRepository(ABC):
         pass
 
     @abstractmethod
-    async def update(self, product_id: int, product_update: ProductUpdate) -> Optional[Product]:
+    async def update(self, productmodel, product_update: ProductUpdate) -> Optional[Product]:
         pass
 
     @abstractmethod
-    async def delete(self, product_id: int) -> Optional[Product]:
+    async def delete(self, productmodel) -> Optional[Product]:
         pass

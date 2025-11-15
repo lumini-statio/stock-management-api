@@ -11,6 +11,7 @@ class UserService:
     async def all(self):
         return await self.repo.all()
     
+    
     async def get_by_id(self, id: int):
         user_db = await self.repo.get_by_id(id)
 
@@ -18,6 +19,7 @@ class UserService:
             raise UserNotFoundError()
         
         return user_db
+    
     
     async def get_by_username(self, username: str):
         user_db = await self.repo.get_by_username(username)
@@ -27,6 +29,7 @@ class UserService:
         
         return user_db
     
+    
     async def save(self, user: CreateUser):
         user_db = await self.repo.get_by_username(user.username)
 
@@ -35,6 +38,7 @@ class UserService:
         
         return await self.repo.save(user)
     
+    
     async def update(self, user: UpdateUser):
         user_db = await self.repo.get_by_username(user.username)
 
@@ -42,6 +46,7 @@ class UserService:
             raise UserNotFoundError()
 
         return await self.repo.update(user_db, user)
+    
     
     async def delete(self, user: DeleteUser):
         user_db = await self.repo.get_by_username(user.username)

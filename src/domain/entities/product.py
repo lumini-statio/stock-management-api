@@ -10,17 +10,17 @@ class Product(ProductBase):
     id: int
     name: str
     description: Optional[str]
-    price: str
+    price: float
 
 class ProductCreate(ProductBase):
     name: str
     description: Optional[str]
-    price: str
+    price: float
 
 class ProductUpdate(ProductBase):
     name: str
     description: Optional[str]
-    price: str
+    price: float
 
 class ProductDelete(ProductBase):
     id: int
