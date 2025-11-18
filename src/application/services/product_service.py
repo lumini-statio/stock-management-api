@@ -1,6 +1,6 @@
-from domain.entities.product import Product, ProductCreate, ProductUpdate, ProductDelete
-from domain.exceptions.products.not_found import ProductNotFoundError
-from domain.ports.product_repository import ProductRepository
+from src.domain.entities.product import Product, ProductCreate, ProductUpdate, ProductDelete
+from src.domain.exceptions.products.not_found import ProductNotFoundError
+from src.domain.ports.product_repository import ProductRepository
 from typing import Optional
 
 

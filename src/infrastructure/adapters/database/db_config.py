@@ -1,6 +1,6 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from infrastructure.adapters.database.models import Base
+from src.infrastructure.adapters.database.models import Base
 
 class DatabaseConfig:
     def __init__(self, connection_string: str):

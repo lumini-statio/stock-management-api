@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-from api.routes.users import user_router
-from api.routes.auth import auth_router
-from api.routes.products import products_router
-from infrastructure.dependencies import create_db
+from src.api.routes.users import user_router
+from src.api.routes.auth import auth_router
+from src.api.routes.products import products_router
+from src.infrastructure.dependencies import create_db
 
 
 app = FastAPI(title="Tu API",

@@ -1,8 +1,9 @@
 from sqlalchemy.orm import Session
-from domain.ports.user_repository import UserRepository
-from infrastructure.adapters.database.models import UserModel
 from typing import Optional
-from infrastructure.schemas import User, CreateUser, UpdateUser, UserResponse
+
+from src.domain.ports.user_repository import UserRepository
+from src.infrastructure.adapters.database.models import UserModel
+from src.infrastructure.schemas import User, CreateUser, UpdateUser, UserResponse
 
 
 class SQLUserRepository(UserRepository):

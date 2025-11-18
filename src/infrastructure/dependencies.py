@@ -3,17 +3,17 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 from jose import JWTError, jwt
 
-from application.services.auth_service import AuthService
-from application.services.product_service import ProductService
-from application.services.user_service import UserService
+from src.application.services.auth_service import AuthService
+from src.application.services.product_service import ProductService
+from src.application.services.user_service import UserService
 
-from domain.ports.product_repository import ProductRepository
-from domain.ports.user_repository import UserRepository
+from src.domain.ports.product_repository import ProductRepository
+from src.domain.ports.user_repository import UserRepository
 
-from infrastructure.adapters.database.db_config import DatabaseConfig
-from infrastructure.adapters.repositories.product_repository import SQLProductRepository
-from infrastructure.adapters.repositories.user_repository import SQLUserRepository
-from infrastructure.adapters.security.jwt_adapter import JWTSecurityAdapter
+from src.infrastructure.adapters.database.db_config import DatabaseConfig
+from src.infrastructure.adapters.repositories.product_repository import SQLProductRepository
+from src.infrastructure.adapters.repositories.user_repository import SQLUserRepository
+from src.infrastructure.adapters.security.jwt_adapter import JWTSecurityAdapter
 
 
 security = HTTPBearer()

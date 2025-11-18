@@ -1,7 +1,7 @@
-from domain.ports.user_repository import UserRepository
-from domain.exceptions.users.not_found import UserNotFoundError
-from domain.exceptions.users.already_exists import UserAlreadyExistsError
-from domain.entities.user import CreateUser, UpdateUser, DeleteUser
+from src.domain.ports.user_repository import UserRepository
+from src.domain.exceptions.users.not_found import UserNotFoundError
+from src.domain.exceptions.users.already_exists import UserAlreadyExistsError
+from src.domain.entities.user import CreateUser, UpdateUser, DeleteUser
 
 
 class UserService:

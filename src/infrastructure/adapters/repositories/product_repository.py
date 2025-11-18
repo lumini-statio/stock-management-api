@@ -1,6 +1,6 @@
-from domain.ports.product_repository import ProductRepository
-from infrastructure.schemas import Product, ProductCreate, ProductUpdate, ProductDelete
-from infrastructure.adapters.database.models import ProductModel
+from src.domain.ports.product_repository import ProductRepository
+from src.infrastructure.schemas import Product, ProductCreate, ProductUpdate, ProductDelete
+from src.infrastructure.adapters.database.models import ProductModel
 from sqlalchemy.orm import Session
 from typing import Optional, List
 

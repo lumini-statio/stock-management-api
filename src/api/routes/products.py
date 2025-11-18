@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 from typing import List
 
-from application.services.product_service import ProductService
-from infrastructure.schemas import Product, ProductCreate, ProductDelete, ProductUpdate
-from infrastructure.dependencies import get_product_service
+from src.application.services.product_service import ProductService
+from src.infrastructure.schemas import Product, ProductCreate, ProductDelete, ProductUpdate
+from src.infrastructure.dependencies import get_product_service
 
 
 products_router = APIRouter(prefix='', tags=['Products Operations'])

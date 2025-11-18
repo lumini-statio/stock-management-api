@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Optional, List
-from domain.entities.product import Product, ProductCreate, ProductUpdate, ProductDelete
+from src.domain.entities.product import Product, ProductCreate, ProductUpdate, ProductDelete
 
 
 class ProductRepository(ABC):
