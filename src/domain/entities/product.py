@@ -8,16 +8,19 @@ class ProductBase(BaseModel):
 
 class Product(ProductBase):
     id: int
+    state: str
     name: str
     description: Optional[str]
     price: float
 
 class ProductCreate(ProductBase):
+    state: str
     name: str
     description: Optional[str]
     price: float
 
 class ProductUpdate(ProductBase):
+    state: str
     name: str
     description: Optional[str]
     price: float

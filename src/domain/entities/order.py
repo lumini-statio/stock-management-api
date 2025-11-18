@@ -10,21 +10,23 @@ class OrderBase(BaseModel):
 
 class Order(OrderBase):
     id: int
+    purchase_id: int
     number: int
     products: List[Product]
-    state: str = 'Dispatching'
+    state: str
 
 
 class OrderCreate(OrderBase):
+    purchase_id: int
     number: int
     products: List[Product]
-    state: str = 'Dispatching'
 
 
 class OrderUpdate(OrderBase):
+    purchase_id: int
     number: int
     products: List[Product]
-    state: str = 'Dispatching'
+    state: str
 
 
 class OrderDelete(OrderBase):
