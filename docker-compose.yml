@@ -1,6 +1,7 @@
 services:
   api:
     build: .
+    container_name: api_prod
     ports: 
       - "8000:8000"
     links:
@@ -8,6 +9,7 @@ services:
 
   mysqldb:
     image: mysql
+    container_name: mysql_prod
     ports:
       - "3307:3307"
     environment:
