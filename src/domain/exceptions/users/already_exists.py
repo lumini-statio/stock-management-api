@@ -1,3 +1,10 @@
-class UserAlreadyExistsError(Exception):
-    def __init__(self, username: str):
-        super().__init__(f'El usuario {username} ya existe, elija otro nombre.')
+from fastapi import status, HTTPException
+
+class UserAlreadyExistsError(HTTPException):
+    def __init__(
+        self,
+        status_code = status.HTTP_400_BAD_REQUEST,
+        detail: str = 'User already exists'
+    ):
+        self.detail = detail
+        self.status_code = status_code

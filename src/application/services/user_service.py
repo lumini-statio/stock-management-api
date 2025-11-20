@@ -39,8 +39,8 @@ class UserService:
         return await self.repo.save(user)
     
     
-    async def update(self, user: UpdateUser):
-        user_db = await self.repo.get_by_username(user.username)
+    async def update(self, user_id: int, user: UpdateUser):
+        user_db = await self.repo.get_by_username(user_id)
 
         if not user_db:
             raise UserNotFoundError()
@@ -48,8 +48,8 @@ class UserService:
         return await self.repo.update(user_db, user)
     
     
-    async def delete(self, user: DeleteUser):
-        user_db = await self.repo.get_by_username(user.username)
+    async def delete(self, user_id: DeleteUser):
+        user_db = await self.repo.get_by_id(user_id)
 
         if not user_db:
             raise UserNotFoundError()
