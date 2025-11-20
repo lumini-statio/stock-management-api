@@ -1,0 +1,22 @@
+services:
+  api-dev:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "8001:8001"
+    links:
+      - mysqldb-dev
+
+  mysqldb-dev:
+    image: mysql
+    ports:
+      - "3308:3308"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+    volumes:
+      - mysql-data-dev:/var/lib/mysql
+      # postgres-data: /var/lib/postgresql/data
+
+volumes:
+  mysql-data-dev:

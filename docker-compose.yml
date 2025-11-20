@@ -1,0 +1,20 @@
+services:
+  api:
+    build: .
+    ports: 
+      - "8000:8000"
+    links:
+      - mysqldb
+
+  mysqldb:
+    image: mysql
+    ports:
+      - "3307:3307"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+    volumes:
+      - mysql-data:/var/lib/mysql
+      # postgres-data: /var/lib/postgresql/data
+
+volumes:
+  mysql-data:
