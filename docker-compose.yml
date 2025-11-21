@@ -1,11 +1,14 @@
 services:
   api:
     build: .
+    image: api-prod
     container_name: api_prod
     ports: 
       - "8000:8000"
     links:
       - mysqldb
+    networks:
+      - net-prod
 
   mysqldb:
     image: mysql
@@ -17,6 +20,12 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       # postgres-data: /var/lib/postgresql/data
+    networks:
+      - net-prod
 
 volumes:
   mysql-data:
+
+networks:
+  net-prod:
+    external: true

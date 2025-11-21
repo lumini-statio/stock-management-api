@@ -3,11 +3,14 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.dev
+    image: api-dev
     container_name: api_dev
     ports: 
       - "8001:8001"
     links:
       - mysqldb-dev
+    networks:
+      - net-dev
 
   mysqldb-dev:
     image: mysql
@@ -19,6 +22,13 @@ services:
     volumes:
       - mysql-data-dev:/var/lib/mysql
       # postgres-data: /var/lib/postgresql/data
+    networks:
+      - net-dev
 
 volumes:
   mysql-data-dev:
+
+networks:
+  net-dev:
+    name: net-dev
+    driver: bridge
